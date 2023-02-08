@@ -1,4 +1,4 @@
-﻿namespace Shared.Domain;
+﻿namespace Domain;
 
 public class Mortgage
 {
@@ -10,7 +10,7 @@ public class Mortgage
     {
         this.player = player;
         this.landContract = landContract;
-        this.deadline = 10;
+        deadline = 10;
     }
 
     public LandContract LandContract => landContract;

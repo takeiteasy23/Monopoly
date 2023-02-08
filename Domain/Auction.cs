@@ -1,6 +1,6 @@
-﻿using Shared.Domain.Exceptions;
+﻿using Domain.Exceptions;
 
-namespace Shared.Domain;
+namespace Domain;
 
 public class Auction
 {
@@ -27,7 +27,7 @@ public class Auction
         {
             highestBidder.AddLandContract(landContract with { Owner = highestBidder });
             highestBidder.Money -= highestPrice;
-            
+
             landContract.Owner.Money += highestPrice;
         }
         else // 流拍

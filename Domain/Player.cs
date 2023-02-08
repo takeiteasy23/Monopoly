@@ -1,6 +1,6 @@
-using Shared.Domain.Interfaces;
+using Domain.Interfaces;
 
-namespace Shared.Domain;
+namespace Domain;
 
 public class Player
 {
@@ -35,7 +35,8 @@ public class Player
         }
     }
 
-    public bool IsBankrupt() {
+    public bool IsBankrupt()
+    {
         return State == PlayerState.Bankrupt;
     }
 
@@ -44,15 +45,18 @@ public class Player
         _landContractList.Add(landContract);
     }
 
-    public void RemoveLandContract(LandContract landContract) {
+    public void RemoveLandContract(LandContract landContract)
+    {
         _landContractList.Remove(landContract);
     }
 
-    public LandContract? FindLandContract(string id) {
+    public LandContract? FindLandContract(string id)
+    {
         return LandContractList.Where(landContract => landContract.Land.Id == id).FirstOrDefault();
     }
 
-    public void AuctionLandContract(string id) {
+    public void AuctionLandContract(string id)
+    {
         var landContract = _landContractList.Where(landContract => landContract.Land.Id == id).FirstOrDefault();
         if (landContract is null)
             throw new Exception("找不到地契");

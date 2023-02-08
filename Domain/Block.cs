@@ -1,4 +1,4 @@
-namespace Shared.Domain;
+namespace Domain;
 
 public abstract class Block
 {
@@ -33,7 +33,7 @@ public abstract class Block
     }
 }
 
-public class Land: Block
+public class Land : Block
 {
     private readonly decimal _price;
     private int house;

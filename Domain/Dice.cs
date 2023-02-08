@@ -1,11 +1,11 @@
-﻿using Shared.Domain.Interfaces;
+﻿using Domain.Interfaces;
 
-namespace Shared.Domain;
+namespace Domain;
 
 public class Dice : IDice
 {
     public int Value { get; private set; }
-    
+
     /// <summary>
     /// 將 Value 設為 1 ~ 6 的數字
     /// </summary>

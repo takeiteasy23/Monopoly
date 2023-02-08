@@ -1,7 +1,7 @@
-﻿using Shared.Domain.Exceptions;
-using static Shared.Domain.Map;
+﻿using Domain.Exceptions;
+using static Domain.Map;
 
-namespace Shared.Domain;
+namespace Domain;
 
 public class Chess
 {
@@ -57,7 +57,7 @@ public class Chess
             currentDirection = directions.First();
         }
     }
-    
+
     public void Move(int moveCount)
     {
         remainingSteps = moveCount;

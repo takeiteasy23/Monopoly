@@ -1,13 +1,15 @@
-namespace Shared.Domain;
+namespace Domain;
 
 public class Map
 {
     private readonly Block?[][] _blocks;
-    public Map(Block?[][] blocks){
+    public Map(Block?[][] blocks)
+    {
         _blocks = blocks;
         GererateBlockConnection(blocks);
     }
-    private static void GererateBlockConnection(Block?[][] blocks){
+    private static void GererateBlockConnection(Block?[][] blocks)
+    {
         for (int i = 0; i < blocks.Length; i++)
         {
             for (int j = 0; j < blocks[i].Length; j++)

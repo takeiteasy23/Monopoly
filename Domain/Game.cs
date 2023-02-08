@@ -1,7 +1,7 @@
-using Shared.Domain.Interfaces;
-using static Shared.Domain.Map;
+using Domain.Interfaces;
+using static Domain.Map;
 
-namespace Shared.Domain;
+namespace Domain;
 
 public class Game
 {
@@ -54,11 +54,11 @@ public class Game
 
     public void SetPlayerToBlock(Player player, string blockId, Direction direction) => player.Chess.SetBlock(blockId, direction);
 
-    public Block GetPlayerPosition(string playerId) 
+    public Block GetPlayerPosition(string playerId)
     {
         Player player = GetPlayer(playerId);
         return player.Chess.CurrentBlock;
-    } 
+    }
 
     // 玩家選擇方向
     // 1.不能選擇回頭的方向
@@ -98,25 +98,25 @@ public class Game
         VerifyCurrentPlayer(player);
         IDice[] dices = player.RollDice(Dices);
     }
-    
+
     public void EndAuction()
     {
         CurrentPlayer.Auction.End();
     }
-    
+
     public void PlayerSellLandContract(string playerId, string landId)
     {
         Player player = GetPlayer(playerId);
         VerifyCurrentPlayer(player);
         player.AuctionLandContract(landId);
     }
-    
+
     public void PlayerBid(string playerId, int price)
     {
         Player player = GetPlayer(playerId);
         CurrentPlayer.Auction.Bid(player, price);
     }
-    
+
     public void MortgageLandContract(string playerId, string landId)
     {
         Player player = GetPlayer(playerId);

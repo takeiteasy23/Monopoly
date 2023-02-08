@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Shared.Domain.Exceptions
+namespace Domain.Exceptions
 {
     [Serializable]
     public class BidException : Exception
