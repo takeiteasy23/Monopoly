@@ -1,7 +1,4 @@
-using Shared.Domain;
-using Shared.Domain.Exceptions;
-
-namespace SharedTests.Domain;
+namespace DomainTests.Testcases;
 
 [TestClass]
 public class SelectDirectionTest

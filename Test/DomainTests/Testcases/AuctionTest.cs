@@ -1,8 +1,4 @@
-namespace SharedTests.Domain;
-
-using Shared.Domain;
-using Shared.Domain.Exceptions;
-using SharedTests;
+namespace DomainTests.Testcases;
 
 [TestClass]
 public class AuctionTest

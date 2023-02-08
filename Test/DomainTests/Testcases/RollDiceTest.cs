@@ -1,8 +1,6 @@
-﻿using Shared.Domain.Exceptions;
-using Shared.Domain;
-using static Shared.Domain.Map;
+﻿using static Domain.Map;
 
-namespace SharedTests.Domain;
+namespace DomainTests.Testcases;
 
 [TestClass]
 public class RollDiceTest
@@ -59,7 +57,7 @@ public class RollDiceTest
         Assert.AreEqual(1, player.Chess.RemainingSteps);
 
     }
-    
+
     [TestMethod]
     [Description(
         """

@@ -1,8 +1,6 @@
 using Moq;
-using Shared.Domain;
-using Shared.Domain.Interfaces;
 
-namespace SharedTests;
+namespace DomainTests;
 
 public class Utils
 {

@@ -1,6 +1,4 @@
-using Shared.Domain;
-
-namespace SharedTests.Domain;
+namespace DomainTests.Testcases;
 
 [TestClass]
 public class GameTest
