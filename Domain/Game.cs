@@ -5,16 +5,20 @@ namespace Domain;
 
 public class Game
 {
-    public string Id { get; init; }
+    public string Id { get; set; }
     public int[]? CurrentDice { get; set; } = null;
     public Player? CurrentPlayer { get; set; }
     public IDice[] Dices { get; init; }
 
+    private IList<IDomainEvent> domainEvents;
+    
     private readonly Map _map;
     private readonly List<Player> _players = new();
     private readonly Dictionary<Player, int> _playerRankDictionary = new(); // 玩家名次 {玩家,名次}
 
     public IDictionary<Player, int> PlayerRankDictionary => _playerRankDictionary.AsReadOnly();
+
+    public IReadOnlyList<IDomainEvent> DomainEvents => domainEvents.AsReadOnly();
 
     // 初始化遊戲
     public Game(string id, Map? map = null, IDice[]? dices = null)
@@ -22,6 +26,7 @@ public class Game
         Id = id;
         _map = map ?? new Map(Array.Empty<Block[]>());
         Dices = dices ?? new IDice[2] { new Dice(), new Dice() };
+        domainEvents = new List<IDomainEvent>();
     }
 
     public void AddPlayer(Player player)

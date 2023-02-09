@@ -1,5 +1,5 @@
-using Shared.Domain;
-using Shared.Repositories;
+using Application.Common;
+using Domain;
 
 namespace Server.Repositories;
 
@@ -13,8 +13,13 @@ public class InMemoryRepository : IRepository
         return game;
     }
 
-    public void Save(Game game)
+    public string Save(Game game)
     {
+        if (game.Id == null)
+        {
+            game.Id = (Games.Count + 1).ToString();
+        }
         Games[game.Id] = game;
+        return game.Id;
     }
 }

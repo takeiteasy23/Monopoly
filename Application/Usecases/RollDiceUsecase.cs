@@ -1,33 +1,31 @@
-using Shared.Repositories;
+using Application.Common;
+using Domain.Interfaces;
 
-namespace Shared.Usecases;
+namespace Application.Usecases;
 
-public class RollDiceUsecase
+public record RollDiceRequest(string GameId, string PlayerId) 
+    : IRequest(GameId, PlayerId);
+
+public class RollDiceUsecase: Usecase<RollDiceRequest>
 {
-    private readonly IRepository _repository;
 
-    public RollDiceUsecase(IRepository repository)
+    public RollDiceUsecase(IRepository repository, IEventBus<IDomainEvent> eventBus)
+        : base(repository, eventBus)
     {
-        _repository = repository;
     }
 
-    public void Execute(Input input, Presenter presenter)
+    public override async Task ExecuteAsync(RollDiceRequest request)
     {
         //查
-        var game = _repository.FindGameById(input.GameId);
+        var game = Repository.FindGameById(request.GameId);
+        
         //改
-        game.PlayerRollDice(input.PlayerId);
+        game.PlayerRollDice(request.PlayerId);
+        
         //存
-        _repository.Save(game);
+        Repository.Save(game);
+
         //推
-        presenter.CurrentDice = game.CurrentDice;
+        await EventBus.PublishAsync(game.DomainEvents);
     }
-
-    public class Presenter
-    {
-        public int[]? CurrentDice { get; set; }
-    }
-
-    public record Input(string GameId, string PlayerId);
-
 }
